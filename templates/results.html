@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search Results
+{% endblock %}
+
+{% block main %}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>ISBN</th>
+            <th>Book Title</th>
+            <th>Author</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Iterate through each item in the dict and output the ISBN, book name, author name, and year -->
+        {% for result in result %}
+            <tr>
+                <td>{{ result['book_id'] }}</td>
+                <td>{{ result['isbn'] }}</td>
+                <td><a href="/book/{{ result['book_id'] }}">{{result['bookname'] }} </a></td>
+                <td>{{ result['author'] }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}

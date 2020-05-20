@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Book Details
+{% endblock %}
+
+{% block main %}
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Book Title</th>
+            <th>Author</th>
+            <th>Year</th>
+            <th>ISBN</th>
+            <th>Average Rating</th>
+            <th>Number of Ratings</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Iterate through each item in the dict and output the ISBN, book name, author name, and year -->
+        <tr>
+            <td>{{ bookname }}</td>
+            <td>{{ author }}</td>
+            <td>{{ year }}</td>
+            <td>{{ isbn }}</td>
+            <td>{{ average_rating }}</td>
+            <td>{{ num_rating }}</td>
+        </tr>
+    </tbody>
+</table>
+<!-- REVIEW FORM -->
+<form method="POST" class="form-border">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 alert alert-info">User Reviews</div>
+            <div class="ml-auto">
+                <div class="form-row">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label for="rating">Rate this book</label>
+                                <select id="rating" name="rating" class="form-control" required>
+                                    <br>
+                                    <option value="5">5</option>
+                                    <option value="4">4</option>
+                                    <option value="3">3</option>
+                                    <option value="2">2</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="form-group">
+            <div class="form-row">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div>
+                            <span class="input-group-text container-fluid">Write your <br> review</span>
+                        </div>
+                        <textarea name="review" id="review" autofocus placeholder="Write your review, choose a rating, and submit." class="form-control container-fluid maxWidth" rows="1" required></textarea>
+                    </div>
+                    <br>
+                    <div class="form-group ml-auto">
+                        <button class="btn btn-success" type="submit">Submit</button>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div id="userReviews">
+    <h2></h2>
+    {% for book_review  in book_review  %}
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+            </div>
+            <p class="mb-1">{{ book_review['review'] }}</p>
+        </a>
+        <div class="dropdown-divider"></div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+
+{% endblock %}

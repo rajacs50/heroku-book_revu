@@ -3,6 +3,6 @@ Flask-Session
 psycopg2-binary
 SQLAlchemy
 requests
-Werkzeug==0.16.0
+Werkzeug==2.2.3
 gunicorn
 redis
